@@ -1,4 +1,4 @@
-package br.edu.ifpb.pp.adapters.translator;
+package br.edu.ifpb.pp.translator;
 
 import java.io.BufferedReader;
 import java.io.OutputStream;
