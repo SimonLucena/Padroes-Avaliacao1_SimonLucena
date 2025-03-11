@@ -4,6 +4,17 @@ import br.edu.ifpb.pp.model.SMS;
 import java.time.format.DateTimeFormatter;
 
 public class TimService implements SMSSender{
+	private static TimService instance;
+
+	private TimService() {} // Construtor privado evita instâncias externas
+
+	public static TimService getInstance() {
+		if (instance == null) {
+			instance = new TimService();
+		}
+		return instance;
+	}
+
 	@Override
 	public boolean sendSMS(SMS sms) {
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");   

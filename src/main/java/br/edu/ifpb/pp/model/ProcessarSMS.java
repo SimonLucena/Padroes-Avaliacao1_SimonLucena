@@ -1,19 +1,15 @@
 package br.edu.ifpb.pp.model;
 
-import br.edu.ifpb.pp.adapters.translator.TranslatorAdapter;
-import br.edu.ifpb.pp.adapters.translator.TranslatorWhatsMateAdapter;
+import br.edu.ifpb.pp.adapters.translator.TranslatorWhatsMate;
 import br.edu.ifpb.pp.api.SMSSender;
 import br.edu.ifpb.pp.factory.SMSSenderFactory;
 
 import java.util.Scanner;
 
 public class ProcessarSMS {
-    public boolean enviar(SMS sms, Scanner reader) throws Exception {
-        System.out.print("Deseja traduzir a mensagem para português? (s/N): ");
-        String resposta = reader.nextLine().trim().toLowerCase();
-
-        if (resposta.equals("s")) {
-            TranslatorAdapter translator = new TranslatorWhatsMateAdapter();
+    public boolean enviar(SMS sms, boolean traducao) throws Exception {
+        if (traducao) {
+            TranslatorWhatsMate translator = new TranslatorWhatsMate();
             sms.setTexto(translator.translate(sms.getTexto(), "pt"));
         }
 

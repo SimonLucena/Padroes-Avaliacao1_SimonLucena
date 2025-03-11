@@ -6,12 +6,11 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class TranslatorWhatsMateAdapter implements TranslatorAdapter {
+public class TranslatorWhatsMate {
     private static final String CLIENT_ID = "FREE_TRIAL_ACCOUNT";
     private static final String CLIENT_SECRET = "PUBLIC_SECRET";
     private static final String ENDPOINT = "http://api.whatsmate.net/v1/translation/translate";
 
-    @Override
     public String translate(String text, String toLang) throws Exception {
         String fromLang  = "en";
 

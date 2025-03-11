@@ -8,7 +8,19 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class VivoService implements SMSSender {
-	private final SMSAdapter adapter = new SMSVivoMessageAdapter();
+	private static VivoService instance;
+	private final SMSAdapter adapter;
+
+	private VivoService() {
+		this.adapter = new SMSVivoMessageAdapter(); // Inicializa o adaptador
+	}
+
+	public static VivoService getInstance() {
+		if (instance == null) {
+			instance = new VivoService();
+		}
+		return instance;
+	}
 
 	@Override
 	public boolean sendSMS(SMS sms) {

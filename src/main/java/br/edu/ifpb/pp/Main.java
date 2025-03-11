@@ -41,10 +41,13 @@ public class Main {
         String destino = contatos.get(escolha)[1];
         System.out.println();
 
+        System.out.print("Deseja traduzir a mensagem para português? (s/N): ");
+        String resposta = reader.nextLine().trim().toLowerCase();
+
         SMS sms = new SMS(origem,destino,mensagem);
 
         ProcessarSMS envio = new ProcessarSMS();
-        if(!envio.enviar(sms,reader)){
+        if(!envio.enviar(sms,resposta.equals("s"))){
             System.out.println("Falha ao enviar o SMS");
         }
 
